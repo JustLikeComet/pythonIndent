@@ -20,7 +20,7 @@ else:
 run command :
 python indentPython.py Test.py
 
-source code file content :
+generate indent code:
 a = 0
 print ("01")
 if a==2:
