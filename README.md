@@ -1,5 +1,5 @@
 # pythonIndent
-A tool to indent python code, make you write python freedom
+A small tool to indent python code, make you write python freedom
 
 Here i add #{ #} to mark the indent place, for example python source file :
 
