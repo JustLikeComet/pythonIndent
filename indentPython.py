@@ -6,6 +6,7 @@ import getopt
 
 
 indentStr = "\t"
+isMultiStr = False
 
 def checkIndent(filepath):
 	indentCount = 0;
@@ -30,6 +31,7 @@ def checkIndent(filepath):
 
 
 def indentCode(filepath):
+	global isMultiStr
 	codeContent = ""
 	indentCount = 0;
 
@@ -39,9 +41,16 @@ def indentCode(filepath):
 		line = fp.readline()
 		if not line:
 			break
+		if isMultiStr :
+			codeContent += line
+			if line.find("'''")>=0:
+				isMultiStr = False
+			continue
 		line = re.sub(r'^\s*', "", line)
 		if len(line)==0:
 			continue
+		if line.find("'''")>=0:
+			isMultiStr = True
 		if line[0] == '#':
 			if line[1] == '{':
 				codeContent += indentStr*indentCount + line
